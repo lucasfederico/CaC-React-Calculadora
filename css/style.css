@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn-all{
+    padding: 0px 1em;
+    background-color: gray;
+    color: white;
+}
+.fondo-boton{
+    background-color:#073b4c;
+}
+.fondo-operacion{
+    background-color: #52796f;
+}
+.btn-borrar{
+    background-color: #e56b6f;
+}
