@@ -47,16 +47,56 @@ let resultado;
 const funcionSumar = () =>{
     variable1 = parseInt(showOperacion.innerHTML)
     showOperacion.innerHTML = ''
+    operacionAritmetica = '+'
+}
+const funcionRestar = () =>{
+    variable1 = parseInt(showOperacion.innerHTML)
+    showOperacion.innerHTML = ''
+    operacionAritmetica = '-'
+}
+const funcionDividir = () =>{
+    variable1 = parseInt(showOperacion.innerHTML)
+    showOperacion.innerHTML = ''
+    operacionAritmetica = '/'
+}
+const funcionMultiplicar = () =>{
+    variable1 = parseInt(showOperacion.innerHTML)
+    showOperacion.innerHTML = ''
+    operacionAritmetica = '*'
 }
 
 btnSumar.addEventListener('click', funcionSumar)
+btnRestar.addEventListener('click', funcionRestar)
+btnDividir.addEventListener('click', funcionDividir)
+btnMultiplicar.addEventListener('click', funcionMultiplicar)
 
-const funcionIgual = () =>{
-    variable2 = parseInt(showOperacion.innerHTML);
-    resultado = variable1 + variable2
+const funcionIgual = (operacion) => {
+    let variable2 = parseInt(showOperacion.innerHTML);
+    switch (operacion) {
+      case '+':
+        resultado = variable1 + variable2;
+        break;
+      case '-':
+        resultado = variable1 - variable2;
+        break;
+      case '*':
+        resultado = variable1 * variable2;
+        break;
+      case '/':
+        if (variable2 !== 0) {
+          resultado = variable1 / variable2;
+        } else {
+          showOperacion.innerHTML = "División por cero no está permitida";
+          return;
+        }
+        break;
+      default:
+        showOperacion.innerHTML = "Operación no válida";
+        return;
+    }
     showOperacion.innerHTML = resultado
 }
 
-btnIgual.addEventListener('click', funcionIgual)
+btnIgual.addEventListener('click', () => funcionIgual(operacionAritmetica));
 
-btnBorrar.addEventListener('click', ()=>{showOperacion.innerHTML = ''})
+btnBorrar.addEventListener('click', () => showOperacion.innerHTML = '')
