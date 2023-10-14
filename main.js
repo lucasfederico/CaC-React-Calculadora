@@ -17,6 +17,8 @@ const btnSumar = document.getElementById('btnSumar');
 const btnIgual = document.getElementById('btnIgual');
 // Borrar
 const btnBorrar = document.getElementById('btnBorrar');
+// Borrar Todo
+const btnBorrarTodo = document.getElementById('btnBorrarTodo')
 // Operacion de la calculadora
 const showOperacion = document.getElementById('showOperacion')
 
@@ -39,64 +41,23 @@ btn3.addEventListener('click', () => escribirNum('3'));
 btn2.addEventListener('click', () => escribirNum('2'));
 btn1.addEventListener('click', () => escribirNum('1'));
 btn0.addEventListener('click', () => escribirNum('0'));
+btnPunto.addEventListener('click', () => escribirNum('.'))
+btnDividir.addEventListener('click', () => escribirNum('/'))
+btnMultiplicar.addEventListener('click', () => escribirNum('*'))
+btnRestar.addEventListener('click', () => escribirNum('-'))
+btnSumar.addEventListener('click', () => escribirNum('+'))
 
-let variable1;
-let variable2;
-let resultado;
+let result;
 
-const funcionSumar = () =>{
-    variable1 = parseInt(showOperacion.innerHTML)
-    showOperacion.innerHTML = ''
-    operacionAritmetica = '+'
-}
-const funcionRestar = () =>{
-    variable1 = parseInt(showOperacion.innerHTML)
-    showOperacion.innerHTML = ''
-    operacionAritmetica = '-'
-}
-const funcionDividir = () =>{
-    variable1 = parseInt(showOperacion.innerHTML)
-    showOperacion.innerHTML = ''
-    operacionAritmetica = '/'
-}
-const funcionMultiplicar = () =>{
-    variable1 = parseInt(showOperacion.innerHTML)
-    showOperacion.innerHTML = ''
-    operacionAritmetica = '*'
+const funcionIgual = () => {
+  result = eval(showOperacion.innerHTML)
+  showOperacion.innerHTML = result
+  console.log(result)
 }
 
-btnSumar.addEventListener('click', funcionSumar)
-btnRestar.addEventListener('click', funcionRestar)
-btnDividir.addEventListener('click', funcionDividir)
-btnMultiplicar.addEventListener('click', funcionMultiplicar)
+btnIgual.addEventListener('click', funcionIgual);
 
-const funcionIgual = (operacion) => {
-    let variable2 = parseInt(showOperacion.innerHTML);
-    switch (operacion) {
-      case '+':
-        resultado = variable1 + variable2;
-        break;
-      case '-':
-        resultado = variable1 - variable2;
-        break;
-      case '*':
-        resultado = variable1 * variable2;
-        break;
-      case '/':
-        if (variable2 !== 0) {
-          resultado = variable1 / variable2;
-        } else {
-          showOperacion.innerHTML = "División por cero no está permitida";
-          return;
-        }
-        break;
-      default:
-        showOperacion.innerHTML = "Operación no válida";
-        return;
-    }
-    showOperacion.innerHTML = resultado
-}
-
-btnIgual.addEventListener('click', () => funcionIgual(operacionAritmetica));
-
-btnBorrar.addEventListener('click', () => showOperacion.innerHTML = '')
+btnBorrar.addEventListener('click', () => {
+  showOperacion.innerHTML = showOperacion.innerHTML.slice(0, -1)
+})
+btnBorrarTodo.addEventListener('click', () => showOperacion.innerHTML = '0')

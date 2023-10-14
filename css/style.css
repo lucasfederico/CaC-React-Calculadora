@@ -1,9 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Prata&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+main{
+    height: 70vh;
+    background-color:#073b4c;
+    padding: 0em 1.5em;
+    border-radius: 0.5em;
 
+}
+.contenedor{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 .btn-all{
     padding: 0px 1em;
     background-color: gray;
